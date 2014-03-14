@@ -1,2 +1,11 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+<!-- Create a simple CodeMirror instance -->
+<script>
+  var myCodeMirror = CodeMirror(document.body, {
+    value: "def self.test\n puts \"Hello\"\nend\n",
+    mode:  "ruby",
+    theme: "solarized",
+    lineNumbers: true
+  });
+</script>
