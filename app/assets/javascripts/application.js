@@ -16,3 +16,6 @@
 //= require_tree .
 //= require codemirror
 //= require codemirror/modes/ruby
+//= require opal
+//= require opal-parser
+//= require opal-jquery

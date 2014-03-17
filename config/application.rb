@@ -20,5 +20,9 @@ module Sazh
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.precompile += ["codemirror*", "codemirror/**/*"]
+    config.opal.method_missing      = true
+    config.opal.optimized_operators = true
+    config.opal.arity_check         = true
+    config.opal.const_missing       = true
   end
 end
