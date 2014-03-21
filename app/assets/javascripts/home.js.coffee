@@ -19,13 +19,20 @@ class HomeIndex
     CodeMirror.commands.save = @evalCode
 
   evalCode: =>
+    @image()
+
     @flush = []
     code = @myCodeMirror.getValue()
-
     try
       Opal.eval(code)
     catch err
-      @puts('' + err + "\\\\n" + err.stack)
+      @puts("" + err + "\\\\n" + err.stack)
+
+  image: ->
+    canvas = $("<canvas/>")[0]
+    img = $("img")[0]
+    canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height)
+    console.log pixelData = canvas.getContext('2d').getImageData(0, 0, 1, 1).data
 
   puts: (str) =>
     @flush.push(str)
