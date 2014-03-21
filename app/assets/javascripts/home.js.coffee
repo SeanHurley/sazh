@@ -5,13 +5,18 @@ class HomeIndex
 
   init: ->
     @myCodeMirror = CodeMirror(document.body, {
-      value: "def self.test\n  puts \"Hello\"\nend\n\ntest\n",
+      keyMap: "vim",
+      lineNumbers: true,
+      matchBrackets: true,
       mode:  "ruby",
+      showCursorWhenSelecting: true,
       theme: "solarized",
-      lineNumbers: true
+      value: "def self.test\n  puts \"Hello\"\nend\n\ntest\n",
+      vimMode: true,
     })
-    $('button')[0].onclick = this.evalCode
+    $('button')[0].onclick = @evalCode
     Opal.gvars.stdout.$puts = @overridePuts
+    CodeMirror.commands.save = @evalCode
 
   evalCode: =>
     @flush = []

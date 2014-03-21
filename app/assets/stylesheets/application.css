@@ -13,4 +13,5 @@
  *= require_tree .
  *= require codemirror
  *= require codemirror/themes/solarized
+ *= require codemirror/addons/dialog/dialog
  */
