@@ -1,37 +1,6 @@
 <h1>Home#index</h1>
 
-<script>
-  var myCodeMirror = CodeMirror(document.body, {
-    value: "def self.test\n puts \"Hello\"\nend\n\ntest\n",
-    mode:  "ruby",
-    theme: "solarized",
-    lineNumbers: true
-  });
-  var flush = [];
-  var puts = function(str) {
-    flush.push(str);
-    var output = $(".output")[0];
-    output.value = flush.join("\n");
-  };
-
-  Opal.gvars.stdout.$puts = function() {
-    for (var i = 0; i < arguments.length; i++) {
-      puts(arguments[i]);
-    }
-  };
-
-  var run = function() {
-    flush = [];
-    var code = myCodeMirror.getValue();
-
-    try {
-      Opal.eval(code);
-    } catch(err) {
-      puts('' + err + "\n" + err.stack);
-    }
-  }
-</script>
-
+<%= image_tag "image.jpeg" %>
 <textarea class="output" rows="20" cols="250"></textarea>
 <br/>
-<button type="button" onclick="run()">Run Code</button>
+<button type="button">Run Code</button>
