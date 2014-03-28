@@ -11,7 +11,7 @@ class HomeIndex
       mode:  "ruby",
       showCursorWhenSelecting: true,
       theme: "solarized",
-      value: "def self.test\n  puts \"Hello\"\nend\n\ntest\n",
+      value: "def test(pixel)\n  puts pixel\nend",
       vimMode: true,
     })
     @outputArea = CodeMirror(document.getElementById("viewer"), {
@@ -24,20 +24,24 @@ class HomeIndex
     CodeMirror.commands.save = @evalCode
 
   evalCode: =>
-    @image()
-
     @flush = []
     code = @myCodeMirror.getValue()
     try
       Opal.eval(code)
     catch err
       @puts("" + err + "\\\\n" + err.stack)
+    @image()
 
   image: ->
     canvas = $("<canvas/>")[0]
     img = $("img")[0]
     canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height)
-    console.log pixelData = canvas.getContext('2d').getImageData(0, 0, 1, 1).data
+    for y in [0...img.height]
+      for x in [0...img.width]
+        pixel = canvas.getContext('2d').getImageData(x, y, 1, 1).data
+        console.log(pixel[0])
+        array = [pixel[i] for i in [0..3]]
+        Opal.Object.$test(array)
 
   puts: (str) =>
     @flush.push(str)
