@@ -4,7 +4,7 @@ class HomeIndex
     @flush = []
 
   init: ->
-    @myCodeMirror = CodeMirror(document.body, {
+    @myCodeMirror = CodeMirror(document.getElementById("editor"), {
       keyMap: "vim",
       lineNumbers: true,
       matchBrackets: true,
@@ -13,6 +13,11 @@ class HomeIndex
       theme: "solarized",
       value: "def self.test\n  puts \"Hello\"\nend\n\ntest\n",
       vimMode: true,
+    })
+    @outputArea = CodeMirror(document.getElementById("viewer"), {
+      readOnly: true,
+      mode:  "javascript",
+      theme: "solarized",
     })
     $('button')[0].onclick = @evalCode
     Opal.gvars.stdout.$puts = @overridePuts
@@ -36,8 +41,7 @@ class HomeIndex
 
   puts: (str) =>
     @flush.push(str)
-    output = $(".output")[0]
-    output.value = @flush.join("\n")
+    @outputArea.setValue(@flush.join("\n"))
 
   overridePuts: =>
     for arg in arguments
