@@ -13,7 +13,7 @@
 ready = () ->
   page = $("body").data("page")
   klass = window[page]
-  if class?
+  if klass?
     instance = new klass
     instance.init()
 
