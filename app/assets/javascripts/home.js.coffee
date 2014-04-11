@@ -29,23 +29,36 @@ class HomeIndex
     try
       Opal.eval(code)
     catch err
-      @puts("" + err + "\\\\n" + err.stack)
+      @puts("" + err + "\n" + err.stack)
     @image()
 
   image: ->
+    output = []
+    for x in [0...@imageData().length]
+      for y in [0...@imageData()[x].length]
+        array = @imageData()[x][y]
+        output.push Opal.Object.$test(array)
+    @outputArea.setValue(@flush.join("\n"))
+
+  imageData: ->
+    return @pixels if @pixels
+
     canvas = $("<canvas/>")[0]
     img = $("img")[0]
     canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height)
-    for y in [0...img.height]
-      for x in [0...img.width]
-        pixel = canvas.getContext('2d').getImageData(x, y, 1, 1).data
-        console.log(pixel[0])
+    imageContext = canvas.getContext('2d')
+    @pixels = []
+    for x in [0...img.height]
+      @pixels.push []
+      for y in [0...img.width]
+        pixel = imageContext.getImageData(x, y, 1, 1).data
         array = [pixel[i] for i in [0..3]]
-        Opal.Object.$test(array)
+        @pixels[x].push array
+    @pixels
+
 
   puts: (str) =>
     @flush.push(str)
-    @outputArea.setValue(@flush.join("\n"))
 
   overridePuts: =>
     for arg in arguments
