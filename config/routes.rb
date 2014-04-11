@@ -1,4 +1,5 @@
 Sazh::Application.routes.draw do
   get "home/index"
-  root :to => "home#index"
+  post "login/start"
+  root :to => "login#login"
 end

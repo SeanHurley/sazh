@@ -1,0 +1,5 @@
+<%= form_tag("/login/start", :method => "post") do %>
+  <%= label_tag "Your email address to contact you if you win" %>
+  <%= email_field_tag "email" %>
+  <%= submit_tag("Get Started") %>
+<% end %>
