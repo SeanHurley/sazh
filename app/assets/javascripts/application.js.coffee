@@ -8,6 +8,7 @@
 //= require opal
 //= require opal-parser
 //= require opal-jquery
+//= require bootstrap.min
 //= require_tree .
 
 ready = () ->

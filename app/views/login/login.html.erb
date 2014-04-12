@@ -1,5 +1,13 @@
-<%= form_tag("/login/start", :method => "post") do %>
-  <%= label_tag "Your email address to contact you if you win" %>
-  <%= email_field_tag "email" %>
-  <%= submit_tag("Get Started") %>
-<% end %>
+<div class="container">
+  <div class="login-container">
+    <div id="output"></div>
+      <div class="form-box">
+        <%= form_tag("/login/start", :method => "post") do %>
+          <%= label_tag "Email" %>
+          <%= email_field_tag "email" %>
+          <%= submit_tag("Get Started", :class => "btn btn-info btn-block login") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

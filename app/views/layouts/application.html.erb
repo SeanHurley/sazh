@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body data-page="<%= [controller.controller_name.capitalize, controller.action_name.capitalize].join %>">
+<body class="<%= controller.controller_name%>" data-page="<%= [controller.controller_name.capitalize, controller.action_name.capitalize].join %>">
 
 <%= yield %>
 

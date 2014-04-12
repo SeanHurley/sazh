@@ -10,8 +10,8 @@
  *
  *= require_self
  *= require_tree .
- *= require_tree .
  *= require codemirror
  *= require codemirror/themes/solarized
  *= require codemirror/addons/dialog/dialog
+ *= require bootstrap.min
  */
