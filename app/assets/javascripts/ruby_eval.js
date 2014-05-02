@@ -35,8 +35,8 @@
       Opal.eval(code);
       this.image();
     } catch(err) {
-      this.puts("" + err + "\\\\n" + err.stack);
-      this.outputArea.setValue(this.flush.join("\\\\n"));
+      this.puts(err);
+      this.outputArea.setValue(this.flush.join("\n"));
     }
   };
 
