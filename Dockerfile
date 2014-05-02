@@ -22,6 +22,9 @@ RUN chmod +x /usr/bin/start-server
 # Add rails project to project directory
 ADD ./ /rails
 
+# Set rails_env to production for deploy
+ENV RAILS_ENV production
+
 # set WORKDIR
 WORKDIR /rails
 
