@@ -1,7 +1,12 @@
-<h1>Home#index</h1>
+<div class="block">
+  <%= image_tag "braintree-logo.png" %>
+</div>
 
-<%= image_tag "braintree-logo.png" %>
 <br/>
-<button type="button">Run Code</button>
 <div id="editor" class="well" style="padding:0"></div>
+<button type="button">Run Code</button>
 <div id="viewer" class="well" style="padding:0"></div>
+
+<script>
+  var temp = new RubyEval();
+</script>

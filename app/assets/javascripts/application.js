@@ -10,12 +10,3 @@
 //= require opal-jquery
 //= require bootstrap.min
 //= require_tree .
-
-ready = () ->
-  page = $("body").data("page")
-  klass = window[page]
-  if klass?
-    instance = new klass
-    instance.init()
-
-$(document).ready(ready)
