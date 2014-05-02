@@ -1,5 +1,3 @@
-# Dockerfile for a Rails application using Nginx and Unicorn
-
 # Select ubuntu as the base image
 FROM ubuntu
 
